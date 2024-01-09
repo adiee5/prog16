@@ -1,0 +1,5 @@
+*.prg
+*.asm
+*.vice-mon-list
+examples/prog16.p8
+out/*

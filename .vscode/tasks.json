@@ -1,0 +1,56 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run Emulator",
+            "type": "shell",
+            "command": "x16emu",
+            "args": [
+                "-debug",
+                //"-scale","2","-quality","nearest",
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "prog8: compile opened file",
+            "type": "shell",
+            "windows": {
+                "command": "java",
+                "args": [
+                    "-jar", "${env:PROG8C}",
+                    "${file}",
+                    "-target", "cx16"
+                ]
+            },
+            "linux":{
+                "command": "p8compile",
+                "args": [
+                    "${file}",
+                    "-target", "cx16"
+                ]
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/out/"
+            },
+            "group": "build"
+        },
+        {
+            "label": "copy prog16.p8 to examples",
+            "type": "shell",
+            "windows": {
+                "command": "copy",
+            },
+            "linux":{
+                "command": "cp",
+            },
+            "args": [
+                    "prog16.p8", "examples/prog16.p8",
+            ],
+        },
+    ]
+}

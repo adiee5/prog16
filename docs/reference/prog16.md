@@ -11,6 +11,8 @@ Goes back to restricted 6502 mode. Always place this function at the end of the 
 ## checkcpu() -> bool
 Returns `true` if the host machine runs on 65c816. Otherwise, returns `false`.
 
+Note: since Prog8 v10.0, There's a function called `cx16.cpu_is_65816()` built in the syslib that does the same thing and it's possible, that it's even faster than `prog16.checkcpu()`.
+
 ## go_16_quick()
 Quicker version of `go_16()` routine, that switches to native mode immediately and doesn't do any kind of checks. Useful, when you frequently need to switch between emulation and native mode. If you switch to 16-bit mode for the first time in your program, you'd be better of using `go_16()` instead, because it'll prevent users from executing the program on 8-bit only machines.
 

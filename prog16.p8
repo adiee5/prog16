@@ -4,8 +4,7 @@ prog16{ ; general routines for handling 16-bit stuff
     sub go_16(){
         if not checkcpu(){
             txt.print("\ryour computer requires a 65c816 cpu in order to run this program!\rpress enter to quit:")
-            str temp="???" ;hopefully, the string's size does not matter
-            void txt.input_chars(temp)
+            void txt.waitkey()
             sys.clear_irqd()
             sys.exit(1)
         }
